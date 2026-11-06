@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Med Salón Peluqueria De Caballeros · Reserva tu cita</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Demo para enseñar en la visita: carta, horario y reserva en 3 toques. Todo es de ejemplo. */
+:root{
+  --ink:#121110; --paper:#f4efe6; --card:#ffffff; --line:#e3dbcd; --muted:#6f675c;
+  --red:#b3261e; --blue:#1f3a8a; --gold:#c08a2e;
+  --display:"Archivo Black",Impact,sans-serif; --body:"Archivo",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5}
+.franja{height:10px;background:repeating-linear-gradient(-45deg,var(--red) 0 14px,#fff 14px 28px,var(--blue) 28px 42px,#fff 42px 56px)}
+.cabecera{background:var(--ink);color:var(--paper);padding:28px max(18px,env(safe-area-inset-left)) 26px}
+.cabecera .dentro{max-width:880px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px 24px}
+h1{font-family:var(--display);font-size:clamp(34px,8vw,58px);line-height:.95;margin:0;letter-spacing:.5px;text-transform:uppercase;text-wrap:balance}
+.cabecera p{margin:6px 0 0;color:#cfc6b6}
+.cabecera .cta{margin-left:auto}
+.boton{font:inherit;font-weight:700;border:0;border-radius:999px;padding:13px 22px;cursor:pointer;background:var(--gold);color:var(--ink);text-decoration:none;display:inline-block}
+.boton.oscuro{background:var(--ink);color:var(--paper)}
+.boton:disabled{opacity:.4;cursor:default}
+.boton:focus-visible,.op:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+main{max-width:880px;margin:0 auto;padding:22px max(18px,env(safe-area-inset-left)) 60px;display:grid;gap:22px}
+.bloque{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+h2{font-family:var(--display);font-size:20px;margin:0 0 12px;text-transform:uppercase;letter-spacing:.4px}
+.paso{color:var(--muted);font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:4px}
+.opciones{display:grid;gap:8px}
+.servicios{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.op{font:inherit;text-align:left;border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:12px 14px;cursor:pointer;display:flex;justify-content:space-between;gap:10px;align-items:center}
+.op small{color:var(--muted);display:block;font-size:12.5px}
+.op b{font-variant-numeric:tabular-nums;white-space:nowrap}
+.op.on{border-color:var(--ink);background:var(--ink);color:var(--paper)}
+.op.on small{color:#cfc6b6}
+.dias{grid-template-columns:repeat(7,minmax(0,1fr))}
+.dia{flex-direction:column;align-items:center;gap:0;padding:9px 4px;text-align:center}
+.dia small{font-size:11px;text-transform:uppercase}
+.dia b{font-size:19px}
+.horas{grid-template-columns:repeat(auto-fill,minmax(78px,1fr))}
+.hora{justify-content:center;font-variant-numeric:tabular-nums;font-weight:600}
+.hora:disabled{opacity:.35;text-decoration:line-through;cursor:default}
+.campos{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-bottom:12px}
+label{font-size:12.5px;font-weight:600;color:var(--muted)}
+input{width:100%;font:inherit;border:1.5px solid var(--line);border-radius:10px;padding:11px 12px;margin-top:4px;background:#fff}
+.resumen{font-size:14px;color:var(--muted);margin:0 0 12px}
+.ok{text-align:center;padding:30px 18px}
+.ok .sello{font-family:var(--display);font-size:26px;text-transform:uppercase}
+.ventajas{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.ventajas div{border-left:4px solid var(--gold);padding:4px 0 4px 12px}
+.ventajas b{display:block}
+.ventajas span{color:var(--muted);font-size:13.5px}
+.datos{display:flex;flex-wrap:wrap;gap:6px 22px;color:var(--muted);font-size:14px}
+.aviso{position:sticky;bottom:0;background:var(--ink);color:#e9e2d4;text-align:center;font-size:12px;padding:8px 14px calc(8px + env(safe-area-inset-bottom))}
+[hidden]{display:none!important}
+@media (max-width:520px){.dias{grid-template-columns:repeat(4,minmax(0,1fr))}.cabecera .cta{margin-left:0}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="franja" aria-hidden="true"></div>
+<header class="cabecera">
+  <div class="dentro">
+    <div>
+      <h1>Med Salón Peluqueria De Caballeros</h1>
+      <p>Calle de Lira 8, 28007</p>
+    </div>
+    <a class="boton cta" href="#reserva">Reservar cita</a>
+  </div>
+</header>
+
+<main>
+  <section class="bloque" id="reserva" aria-labelledby="t-reserva">
+    <div id="flujo">
+      <div class="paso">Paso 1 de 3</div>
+      <h2 id="t-reserva">Elige servicio</h2>
+      <div class="opciones servicios" id="servicios"></div>
+
+      <div id="bloqueDia" hidden>
+        <div class="paso" style="margin-top:18px">Paso 2 de 3</div>
+        <h2>Día y hora</h2>
+        <div class="opciones dias" id="dias"></div>
+        <div class="opciones horas" id="horas" style="margin-top:10px"></div>
+      </div>
+
+      <div id="bloqueDatos" hidden>
+        <div class="paso" style="margin-top:18px">Paso 3 de 3</div>
+        <h2>Tus datos</h2>
+        <p class="resumen" id="resumen"></p>
+        <div class="campos">
+          <div><label for="nombre">Nombre</label><input id="nombre" autocomplete="name" placeholder="Tu nombre"></div>
+          <div><label for="tel">Móvil</label><input id="tel" inputmode="tel" autocomplete="tel" placeholder="600 000 000"></div>
+        </div>
+        <button class="boton oscuro" id="confirmar" type="button" disabled>Confirmar cita</button>
+      </div>
+    </div>
+    <div class="ok" id="hecho" hidden>
+      <div class="sello">Cita reservada</div>
+      <p id="textoOk"></p>
+      <p style="color:var(--muted);font-size:13.5px">Te llegaría un recordatorio por WhatsApp el día antes. Sin llamadas, sin esperas y sin comisiones de plataformas.</p>
+      <button class="boton" type="button" id="otra">Hacer otra reserva</button>
+    </div>
+  </section>
+
+  <section class="bloque" aria-labelledby="t-por-que">
+    <h2 id="t-por-que">Lo que gana Med Salón Peluqueria De Caballeros</h2>
+    <div class="ventajas">
+      <div><b>Reservas 24/7</b><span>Los clientes cogen cita a cualquier hora, también con el local cerrado.</span></div>
+      <div><b>Cero comisiones</b><span>La web es vuestra: nada de pagar por cada cita a una plataforma.</span></div>
+      <div><b>Menos plantones</b><span>Recordatorio automático el día antes.</span></div>
+      <div><b>Agenda clara</b><span>Ves las citas del día en el móvil y bloqueas huecos cuando quieras.</span></div>
+    </div>
+  </section>
+
+  <section class="bloque" aria-labelledby="t-donde">
+    <h2 id="t-donde">Dónde estamos</h2>
+    <div class="datos">
+      <span>Calle de Lira 8, 28007</span>
+      <span>+34910336424</span>
+      <span>Horario: Mo-Fr 09:30-14:00,16:00-21:00; Sa 09:30-15:00; Su off</span>
+    </div>
+  </section>
+</main>
+<div class="aviso">Demo preparada por David para Med Salón Peluqueria De Caballeros. Servicios, precios y horas son de ejemplo.</div>
+
+<script>
+"use strict";
+const SERVICIOS = [
+  {n: "Corte", d: "Lavado y peinado", m: 30, p: 15},
+  {n: "Corte + barba", d: "Arreglo con navaja y toalla caliente", m: 45, p: 22},
+  {n: "Arreglo de barba", d: "Perfilado y aceite", m: 20, p: 10},
+  {n: "Rapado", d: "Máquina, un solo número", m: 15, p: 9},
+];
+const estado = {s: null, d: null, h: null};
+const $ = id => document.getElementById(id);
+const DIAS = ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"];
+
+function pintarServicios() {
+  $("servicios").innerHTML = SERVICIOS.map((s, i) =>
+    `<button class="op${estado.s === i ? " on" : ""}" type="button" data-s="${i}"><span>${s.n}<small>${s.d} · ${s.m} min</small></span><b>${s.p} €</b></button>`).join("");
+}
+function proximosDias() {
+  const out = [], hoy = new Date();
+  for (let i = 0; out.length < 7; i++) {
+    const d = new Date(hoy); d.setDate(hoy.getDate() + i);
+    if (d.getDay() !== 0) out.push(d);   // cerrado los domingos (ejemplo)
+  }
+  return out;
+}
+function pintarDias() {
+  $("dias").innerHTML = proximosDias().map((d, i) =>
+    `<button class="op dia${estado.d === i ? " on" : ""}" type="button" data-d="${i}"><small>${i === 0 ? "hoy" : DIAS[d.getDay()]}</small><b>${d.getDate()}</b></button>`).join("");
+}
+function pintarHoras() {
+  if (estado.d === null) { $("horas").innerHTML = ""; return; }
+  const horas = [];
+  for (let h = 10; h < 20; h++) for (const m of [0, 30]) horas.push(`${String(h).padStart(2, "0")}:${m ? "30" : "00"}`);
+  // Algunas horas ocupadas, siempre las mismas para el mismo día (parece una agenda real)
+  const ocupada = (t, i) => ((estado.d * 7 + i * 3) % 5 === 0);
+  $("horas").innerHTML = horas.map((t, i) =>
+    `<button class="op hora${estado.h === t ? " on" : ""}" type="button" data-h="${t}" ${ocupada(t, i) ? "disabled aria-label='" + t + " ocupada'" : ""}>${t}</button>`).join("");
+}
+function actualizar() {
+  pintarServicios(); pintarDias(); pintarHoras();
+  $("bloqueDia").hidden = estado.s === null;
+  $("bloqueDatos").hidden = estado.h === null;
+  if (estado.h !== null) {
+    const s = SERVICIOS[estado.s], d = proximosDias()[estado.d];
+    $("resumen").textContent = `${s.n} · ${d.toLocaleDateString("es-ES", {weekday: "long", day: "numeric", month: "long"})} a las ${estado.h} · ${s.p} €`;
+  }
+  $("confirmar").disabled = !($("nombre").value.trim() && $("tel").value.replace(/\D/g, "").length >= 9);
+}
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-s],[data-d],[data-h]"); if (!b || b.disabled) return;
+  if (b.dataset.s !== undefined) { estado.s = +b.dataset.s; }
+  if (b.dataset.d !== undefined) { estado.d = +b.dataset.d; estado.h = null; }
+  if (b.dataset.h !== undefined) { estado.h = b.dataset.h; }
+  actualizar();
+  if (b.dataset.s !== undefined) $("bloqueDia").scrollIntoView({behavior: "smooth", block: "nearest"});
+  if (b.dataset.h !== undefined) $("bloqueDatos").scrollIntoView({behavior: "smooth", block: "nearest"});
+});
+["nombre", "tel"].forEach(id => $(id).addEventListener("input", actualizar));
+$("confirmar").onclick = () => {
+  const s = SERVICIOS[estado.s], d = proximosDias()[estado.d];
+  $("textoOk").textContent = `${$("nombre").value.trim()}, te esperamos el ${d.toLocaleDateString("es-ES", {weekday: "long", day: "numeric"})} a las ${estado.h} para ${s.n.toLowerCase()}.`;
+  $("flujo").hidden = true; $("hecho").hidden = false;
+};
+$("otra").onclick = () => { estado.s = estado.d = estado.h = null; $("flujo").hidden = false; $("hecho").hidden = true; actualizar(); };
+actualizar();
+</script>
+</body>
+</html>
